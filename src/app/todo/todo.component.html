@@ -1,0 +1,32 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h1> My Todo List </h1>
+
+  <!--  <input type="text" [(ngModel)]="inputTitle"/>-->
+  <button (click)="add" class="btn btn-success"><i class="far fa-eye"></i></button>
+
+  <div *ngIf="tasks && tasks.length > 0">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let task of tasks; index as i;">
+      <tr>
+        <td>{{ i }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.note }}</td>
+        <td>
+          <button (click)="view(i)"><i class="far fa-eye"></i></button>
+          <button (click)="delete(i)"><i class="far fa-trash-alt"></i></button>
+          <button (click)="edit(i)"><i class="far fa-edit"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

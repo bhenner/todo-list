@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "title": "Mow lawn",
+      "note": "Should be done by 28 feb"
+    },
+    {
+      "title": "Wash car",
+      "note": "Use MkUiars Wax!"
+    },
+    {
+      "title": "Buy groceries",
+      "note": "Apples, bananas and some tomatoes."
+    }
+  ]
+}
