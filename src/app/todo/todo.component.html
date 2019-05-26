@@ -5,19 +5,17 @@
   <!--  <input type="text" [(ngModel)]="inputTitle"/>-->
   <button (click)="add" class="btn btn-success"><i class="far fa-eye"></i></button>
 
-  <div *ngIf="tasks && tasks.length > 0">
+  <div *ngIf="tasks && tasks.length > 0; else noTasks">
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Task</th>
+        <th>Note</th>
         <th></th>
       </tr>
       </thead>
       <tbody *ngFor="let task of tasks; index as i;">
       <tr>
-        <td>{{ i }}</td>
         <td>{{ task.title }}</td>
         <td>{{ task.note }}</td>
         <td>
@@ -29,4 +27,9 @@
       </tbody>
     </table>
   </div>
+
+  <div *ngIf="condition as value">{{value}}</div>
+  <ng-template #noTasks>
+    <h2>Congratulations, you finished your list ! </h2>
+  </ng-template>
 </div>

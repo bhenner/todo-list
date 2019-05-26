@@ -18,7 +18,7 @@ export class TodoComponent implements OnInit {
   /**
    * retrieve tasks through the reader
    */
-  getTasks(): Task[] {
+  loadTasks(): Task[] {
     return this.taskReaderService.getTasks();
   }
 
@@ -26,9 +26,35 @@ export class TodoComponent implements OnInit {
    * Load tasks on init
    */
   ngOnInit() {
-    this.tasks = this.getTasks();
+    this.tasks = this.loadTasks();
     console.log('Initialized tasks');
     console.log(this.tasks);
+  }
+
+  delete(index): boolean {
+
+    let remaining_tasks: Task[] = [];
+
+    console.log('Try to remove task #' + index);
+
+    for (let i = 0; i < this.tasks.length; i++) {
+
+      console.log(this.tasks[i]);
+
+      console.log(i)
+      if (i == index) {
+        console.log('skkiped');
+        continue;
+      }
+
+      remaining_tasks.push(this.tasks[i]);
+    }
+
+    this.tasks = remaining_tasks;
+
+    return true;
+
+
   }
 
 }
