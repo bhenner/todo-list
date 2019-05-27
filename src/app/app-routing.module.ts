@@ -28,7 +28,12 @@ const routes: Routes = [
     path: 'tasks/:id/edit',
     component: TaskEditComponent,
     data: {title: 'Task edition'}
-  }
+  },
+  // Always go on /tasks path
+  { path: '',
+    redirectTo: '/tasks',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

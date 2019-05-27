@@ -14,6 +14,16 @@
       "id": 3,
       "title": "Buy groceries",
       "note": "Apples, bananas and some tomatoes."
+    },
+    {
+      "id": 4,
+      "title": "Add validation",
+      "note": "No data validation is implemented in this app : fix this !"
+    },
+    {
+      "id": 5,
+      "title": "Add tests",
+      "note": "Add some unit tests !"
     }
   ]
 }

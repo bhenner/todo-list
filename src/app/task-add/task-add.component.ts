@@ -23,6 +23,9 @@ export class TaskAddComponent {
   constructor(private storage: TaskStorageService, private router: Router) {
   }
 
+  /**
+   * Create a task a redirect to the todo list
+   */
   createTask() {
     this.storage.add(this.title.value, this.note.value);
     this.router.navigate(['/tasks'])

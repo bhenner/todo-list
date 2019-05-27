@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Task} from "../shared/models/task.model";
 import {TaskStorageService} from "../task-storage.service";
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-task-edit',
@@ -44,7 +44,6 @@ export class TaskEditComponent implements OnInit {
     });
   }
 
-
   /**
    * Update the task and return to the list
    */
@@ -52,5 +51,4 @@ export class TaskEditComponent implements OnInit {
     this.task = this.storage.update(this.id, this.title.value, this.note.value);
     this.router.navigate(['/tasks'])
   }
-
 }

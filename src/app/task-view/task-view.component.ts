@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-
 import {Task} from "../shared/models/task.model";
 import {TaskStorageService} from "../task-storage.service";
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-task-view',
@@ -16,7 +15,9 @@ export class TaskViewComponent implements OnInit {
   constructor(private storage: TaskStorageService, private route: ActivatedRoute, private router: Router) {
   }
 
-
+  /**
+   *  Load task from route id parameter
+   */
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.task = this.storage.get(params.get('id'));
@@ -24,7 +25,7 @@ export class TaskViewComponent implements OnInit {
   }
 
   /**
-   * Remove the tasks from the list
+   * Remove the task from the list
    *
    * @param id task index to remove
    */
