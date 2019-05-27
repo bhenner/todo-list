@@ -61,12 +61,14 @@ export class TaskStorageService {
     return null;
   }
 
-  //
-  // add(title, note) {
-  //
-  //
-  // }
-  //
+
+  add(title, note) {
+    var newID = this.getHighestId() + 1;
+    var task = new Task(title, note);
+    task.id = newID;
+    this.tasks.push(task);
+  }
+
   /**
    * Update the task and return it
    *
@@ -110,5 +112,22 @@ export class TaskStorageService {
     }
 
     this.initialized = true;
+  }
+
+  getHighestId(): number {
+
+    let highest: number = 0;
+    this.init();
+    this.tasks.forEach(function (current_task: Task) {
+
+      if (current_task.id < highest) {
+        return;
+      }
+
+      highest = current_task.id;
+    });
+
+    return highest;
+
   }
 }
