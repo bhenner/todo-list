@@ -1,21 +1,11 @@
-<section class="container ">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Task #{{task.id}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{task.title}}Card subtitle</h6>
+    <p class="card-text">{{task.note}}</p>
 
-  <h1>Task contents</h1>
+    <button (click)="delete(task.id)" class="btn btn-danger">Task done !</button>
 
-  <div class="container">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Task #{{task.id}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{task.title}}Card subtitle</h6>
-        <p class="card-text">{{task.note}}</p>
-
-        <button (click)="delete(task.id)" class="btn btn-danger">Task done !</button>
-
-        <button class="btn btn-light" [routerLink]="['/tasks']">Back</button>
-      </div>
-    </div>
+    <button class="btn btn-light" [routerLink]="['/tasks']">Back</button>
   </div>
-
-
-</section>
-
+</div>

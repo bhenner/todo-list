@@ -1,36 +1,32 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1> My Todo List </h1>
+<button class="btn btn-success" [routerLink]="['/tasks/add']">New task</button>
 
-  <button class="btn btn-success" [routerLink]="['/tasks/add']">New</button>
-
-  <div *ngIf="tasks && tasks.length > 0; else noTasks">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Task</th>
-        <th>Note</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody *ngFor="let task of tasks">
-      <tr>
-        <td>{{ task.id }}</td>
-        <td>{{ task.title }}</td>
-        <td>{{ task.note }}</td>
-        <td>
-          <button [routerLink]="['/tasks/', task.id]"><i class="far fa-eye"></i></button>
-          <button (click)="delete(task.id)"><i class="far fa-trash-alt"></i></button>
-          <button [routerLink]="['/tasks/', task.id, 'edit']"><i class="far fa-edit"></i></button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div *ngIf="condition as value">{{value}}</div>
-  <ng-template #noTasks>
-    <h2>Congratulations, you finished your list ! </h2>
-  </ng-template>
+<div *ngIf="tasks && tasks.length > 0; else noTasks">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Task</th>
+      <th>Note</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let task of tasks">
+    <tr>
+      <td>{{ task.id }}</td>
+      <td>{{ task.title }}</td>
+      <td>{{ task.note }}</td>
+      <td>
+        <button class="btn btn-light" [routerLink]="['/tasks/', task.id]"><i class="far fa-eye"></i></button>
+        <button class="btn btn-light" (click)="delete(task.id)"><i class="far fa-trash-alt"></i></button>
+        <button class="btn btn-light" [routerLink]="['/tasks/', task.id, 'edit']"><i class="far fa-edit"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
+<div *ngIf="condition as value">{{value}}</div>
+<ng-template #noTasks>
+  <h2>Congratulations, you finished your list ! </h2>
+</ng-template>
