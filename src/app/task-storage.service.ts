@@ -10,11 +10,11 @@ import {Router} from "@angular/router"
 })
 export class TaskStorageService {
 
-  tasks: Task[];
+  tasks: Task[] = [];
 
   initialized = false;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   getTasks(): Task[] {
@@ -46,6 +46,8 @@ export class TaskStorageService {
 
   get(id): Task {
 
+    this.init();
+
     for (let i = 0; i < this.tasks.length; i++) {
       var task = this.tasks[i];
       // we found the task to remove, we do not include it in our new array
@@ -65,20 +67,48 @@ export class TaskStorageService {
   //
   // }
   //
-  update(index, title: string, note: string) {
-    this.router.navigate(['/tasks'])
+  /**
+   * Update the task and return it
+   *
+   * @param id
+   * @param title
+   * @param note
+   *
+   * @return Task
+   */
+  update(id, title: string, note: string): Task {
+
+    var task = this.get(id);
+
+    task.title = title;
+    task.note = note;
+
+    return task;
   }
 
   /**
    * Load tasks from json files
    */
   init() {
+
     if (this.initialized) {
       console.log('Already initialized');
       return;
     }
     console.log('Loading data from json file');
-    this.tasks = init_tasks;
+
+
+    for (let i = 0; i < init_tasks.length; i++) {
+      var task = new Task();
+
+      task.id = init_tasks[i]['id'];
+      task.title = init_tasks[i]['title'];
+      task.note = init_tasks[i]['note'];
+
+      this.tasks.push(task);
+
+    }
+
     this.initialized = true;
   }
 }
