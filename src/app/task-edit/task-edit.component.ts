@@ -36,12 +36,8 @@ export class TaskEditComponent implements OnInit {
    * Load tasks on init
    */
   ngOnInit() {
-
-
     this.route.paramMap.subscribe(params => {
-
       this.task = this.storage.get(params.get('id'));
-
       this.id = this.task.id;
       this.note.setValue(this.task.note);
       this.title.setValue(this.task.title);
