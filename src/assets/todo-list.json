@@ -1,14 +1,17 @@
 {
   "init_tasks": [
     {
+      "id": 1,
       "title": "Mow lawn",
       "note": "Should be done by 28 feb"
     },
     {
+      "id": 2,
       "title": "Wash car",
       "note": "Use MkUiars Wax!"
     },
     {
+      "id": 3,
       "title": "Buy groceries",
       "note": "Apples, bananas and some tomatoes."
     }

@@ -2,16 +2,19 @@ import {Injectable} from '@angular/core';
 
 import {init_tasks} from '../assets/todo-list.json';
 import {Task} from "../app/shared/models/task.model";
+import {Router} from "@angular/router"
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskStorageService implements OnInit {
+export class TaskStorageService {
 
   tasks: Task[];
 
-  constructor() {
+  initialized = false;
+
+  constructor(private router: Router) {
   }
 
   getTasks(): Task[] {
@@ -23,12 +26,15 @@ export class TaskStorageService implements OnInit {
    *
    * @param index task index to remove
    */
-  delete(index) {
+  delete(id) {
 
     let remaining_tasks: Task[] = [];
     for (let i = 0; i < this.tasks.length; i++) {
+      var current_task = this.tasks[i];
+
       // we found the task to remove, we do not include it in our new array
-      if (i == index) {
+      if (id == current_task.id) {
+        console.log('Skipping tash[' + current_task.title + ']');
         continue;
       }
 
@@ -38,20 +44,41 @@ export class TaskStorageService implements OnInit {
     return true;
   }
 
+  get(id): Task {
 
-  add(title, note) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      var task = this.tasks[i];
+      // we found the task to remove, we do not include it in our new array
+      if (task.id != id) {
+        continue;
+      }
+      return task;
+    }
+    console.log('not found');
 
-
+    return null;
   }
 
-  update(index, Task: task) {
-
+  //
+  // add(title, note) {
+  //
+  //
+  // }
+  //
+  update(index, title: string, note: string) {
+    this.router.navigate(['/tasks'])
   }
 
   /**
    * Load tasks from json files
    */
   init() {
+    if (this.initialized) {
+      console.log('Already initialized');
+      return;
+    }
+    console.log('Loading data from json file');
     this.tasks = init_tasks;
+    this.initialized = true;
   }
 }

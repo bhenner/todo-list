@@ -17,7 +17,7 @@ export class TodoComponent implements OnInit {
   /**
    * Load tasks on init
    */
-  ngOnInit() {
+  ngOnInit() : void{
     this.storage.init();
     this.tasks = this.storage.getTasks();
   }
@@ -25,10 +25,10 @@ export class TodoComponent implements OnInit {
   /**
    * Remove the tasks from the list
    *
-   * @param index task index to remove
+   * @param id task index to remove
    */
-  delete(index): boolean {
-    this.storage.delete(index);
+  delete(id): void {
+    this.storage.delete(id);
     this.tasks = this.storage.getTasks();
   }
 }
