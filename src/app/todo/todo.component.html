@@ -2,8 +2,7 @@
 <div>
   <h1> My Todo List </h1>
 
-  <!--  <input type="text" [(ngModel)]="inputTitle"/>-->
-  <button (click)="add" class="btn btn-success"><i class="far fa-eye"></i></button>
+  <button class="btn btn-success" [routerLink]="['/tasks/add']">New</button>
 
   <div *ngIf="tasks && tasks.length > 0; else noTasks">
     <table class="table table-striped">
@@ -19,9 +18,9 @@
         <td>{{ task.title }}</td>
         <td>{{ task.note }}</td>
         <td>
-          <button (click)="view(i)"><i class="far fa-eye"></i></button>
+          <button [routerLink]="['/tasks/', i]"><i class="far fa-eye"></i></button>
           <button (click)="delete(i)"><i class="far fa-trash-alt"></i></button>
-          <button (click)="edit(i)"><i class="far fa-edit"></i></button>
+          <button [routerLink]="['/tasks/', i, 'edit']"><i class="far fa-edit"></i></button>
         </td>
       </tr>
       </tbody>

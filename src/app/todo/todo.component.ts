@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TaskReaderService} from "../task-reader.service";
+import {TaskStorageService} from "../task-storage.service";
 import {Task} from "../shared/models/task.model";
 
 @Component({
@@ -11,50 +11,24 @@ export class TodoComponent implements OnInit {
 
   tasks: Task[];
 
-
-  constructor(private taskReaderService: TaskReaderService) {
-  }
-
-  /**
-   * retrieve tasks through the reader
-   */
-  loadTasks(): Task[] {
-    return this.taskReaderService.getTasks();
+  constructor(private storage: TaskStorageService) {
   }
 
   /**
    * Load tasks on init
    */
   ngOnInit() {
-    this.tasks = this.loadTasks();
-    console.log('Initialized tasks');
-    console.log(this.tasks);
+    this.storage.init();
+    this.tasks = this.storage.getTasks();
   }
 
+  /**
+   * Remove the tasks from the list
+   *
+   * @param index task index to remove
+   */
   delete(index): boolean {
-
-    let remaining_tasks: Task[] = [];
-
-    console.log('Try to remove task #' + index);
-
-    for (let i = 0; i < this.tasks.length; i++) {
-
-      console.log(this.tasks[i]);
-
-      console.log(i)
-      if (i == index) {
-        console.log('skkiped');
-        continue;
-      }
-
-      remaining_tasks.push(this.tasks[i]);
-    }
-
-    this.tasks = remaining_tasks;
-
-    return true;
-
-
+    this.storage.delete(index);
+    this.tasks = this.storage.getTasks();
   }
-
 }

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TaskReaderService } from './task-reader.service';
+import { TaskStorageService } from './task-storage.service';
 
-describe('TaskReaderService', () => {
+describe('TaskStorageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TaskReaderService = TestBed.get(TaskReaderService);
+    const service: TaskStorageService = TestBed.get(TaskStorageService);
     expect(service).toBeTruthy();
   });
 });

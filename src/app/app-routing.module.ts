@@ -3,29 +3,30 @@ import {Routes, RouterModule} from '@angular/router';
 import {TodoComponent} from './todo/todo.component';
 import {TaskAddComponent} from "./task-add/task-add.component";
 import {TaskViewComponent} from "./task-view/task-view.component";
+import {TaskEditComponent} from "./task-edit/task-edit.component";
 
 const routes: Routes = [
   {
     // contains the whole todo list
-    path: 'todo',
+    path: 'tasks',
     component: TodoComponent
   },
   {
     // display the form to add a new task
-    path: 'todo/add',
+    path: 'tasks/add',
     component: TaskAddComponent,
     data: {title: 'Add new task'}
   },
   {
     // display the form to add a new task
-    path: 'todo/task/:id',
+    path: 'tasks/:id',
     component: TaskViewComponent,
     data: {title: 'Task to do'}
   },
   {
     // display the form to add a new task
-    path: 'todo/task/:id/edit',
-    component: TaskAddComponent,
+    path: 'tasks/:id/edit',
+    component: TaskEditComponent,
     data: {title: 'Task edition'}
   }
 ];
